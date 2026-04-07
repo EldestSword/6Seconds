@@ -1,0 +1,17 @@
+{
+  "id": "music",
+  "name": "Music",
+  "description": "Bangers only.",
+  "prompts": [
+    "Name 3 musical instruments.",
+    "Name 3 songs everyone sings badly at karaoke.",
+    "Name 3 artists with one-word names.",
+    "Name 3 things found in a band rehearsal room.",
+    "Name 3 genres of music.",
+    "Name 3 songs with a colour in the title.",
+    "Name 3 artists known by initials.",
+    "Name 3 famous duos in music.",
+    "Name 3 songs used at weddings.",
+    "Name 3 things that can be out of tune."
+  ]
+}

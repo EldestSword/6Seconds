@@ -1,0 +1,22 @@
+{
+  "id": "general",
+  "name": "General",
+  "description": "Classic all-rounders for warm-up rounds.",
+  "prompts": [
+    "Name 3 things you do before leaving the house.",
+    "Name 3 things that are usually red.",
+    "Name 3 words that rhyme with light.",
+    "Name 3 things people lose all the time.",
+    "Name 3 places you queue.",
+    "Name 3 things you keep in your wallet.",
+    "Name 3 jobs that wear uniforms.",
+    "Name 3 reasons someone might be late.",
+    "Name 3 things you can open.",
+    "Name 3 places where you need a ticket.",
+    "Name 3 things you can climb.",
+    "Name 3 things that are annoying when they run out.",
+    "Name 3 things that smell great.",
+    "Name 3 things people pretend to understand.",
+    "Name 3 excuses for skipping the gym."
+  ]
+}

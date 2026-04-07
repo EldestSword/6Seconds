@@ -1,0 +1,33 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.1.1] - 2026-04-06
+
+### Fixed
+- Removed binary `.wav` assets that prevented PR creation in environments that reject binary file diffs.
+- Replaced file-based audio playback with Web Audio API synthesis so all sound cues remain local, static, and repository-text-only.
+
+## [1.1.0] - 2026-04-06
+
+### Added
+- Modular static app structure split into focused scripts for app flow, game state, prompts, audio, storage, and UI rendering.
+- Premium game-show visual redesign with bold title lockup, spotlight, high-contrast stage layout, and improved Teams readability.
+- Dramatic turn reveal sequence with animated prompt selection and reading-delay-to-countdown flow.
+- Local bundled sound suite: intro, reveal, tick, buzzer, correct, incorrect, round transition, and winner fanfare.
+- Producer controls panel for timer length, reading delay, volume, animation intensity, prompt pack toggles, deck reset, and game reset.
+- Hotkeys for live hosting (`Space`, `Y`, `N`, `S`, `M`, `R`, `F`) with input-safe handling.
+- Prompt pack architecture using local JSON files with multiple categories and non-repeating prompt draw logic.
+- Local save/resume session support with resume-or-new choice on load.
+- Endgame winner/results modal with ranked scoreboard and session stats.
+
+### Changed
+- Upgraded branding and typography treatment to emphasize “BIG TWED'S 5 SECOND RULE RIP OFF” as a playful premium game title.
+- Improved scoreboard presentation with current player highlighting and leader indicators.
+
+### Security
+- Kept implementation static and browser-only with no backend and no remote runtime dependencies.
+- Prompt content rendering remains text-safe to avoid unsafe HTML injection from prompt data.

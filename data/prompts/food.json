@@ -1,0 +1,17 @@
+{
+  "id": "food",
+  "name": "Food",
+  "description": "Hungry, chaotic, and very judgey.",
+  "prompts": [
+    "Name 3 pizza toppings.",
+    "Name 3 foods people eat with their hands.",
+    "Name 3 herbs or spices.",
+    "Name 3 breakfast items.",
+    "Name 3 things you would find in a fridge.",
+    "Name 3 foods that are messy to eat.",
+    "Name 3 things you can toast.",
+    "Name 3 flavours of ice cream.",
+    "Name 3 condiments.",
+    "Name 3 things you can bake."
+  ]
+}
