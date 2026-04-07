@@ -1,0 +1,17 @@
+{
+  "id": "geography",
+  "name": "Geography",
+  "description": "Maps, places, and panic.",
+  "prompts": [
+    "Name 3 capital cities.",
+    "Name 3 countries in South America.",
+    "Name 3 US states on the West Coast.",
+    "Name 3 European rivers.",
+    "Name 3 countries that start with S.",
+    "Name 3 famous mountains.",
+    "Name 3 deserts.",
+    "Name 3 islands.",
+    "Name 3 countries with red in their flag.",
+    "Name 3 things you find at an airport."
+  ]
+}

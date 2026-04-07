@@ -1,0 +1,17 @@
+{
+  "id": "worksafeChaos",
+  "name": "Work-safe Chaos",
+  "description": "Silly but office-friendly.",
+  "prompts": [
+    "Name 3 reasons to fake a dramatic gasp.",
+    "Name 3 things you should not microwave.",
+    "Name 3 ways to look busy on a video call.",
+    "Name 3 harmless things that feel illegal.",
+    "Name 3 office items that could be a band name.",
+    "Name 3 things that instantly improve a Monday.",
+    "Name 3 things you say when your camera freezes.",
+    "Name 3 bizarre but believable excuses.",
+    "Name 3 things nobody reads properly.",
+    "Name 3 words that sound made up but are real."
+  ]
+}

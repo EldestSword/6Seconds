@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BIG TWED'S 5 SECOND RULE RIP OFF</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body data-animation="normal">
+    <div class="background-glow" aria-hidden="true"></div>
+
+    <header class="top-bar">
+      <div class="brand-lockup">
+        <p class="brand-kicker">LIVE PARTY QUIZ</p>
+        <h1>BIG TWED'S <span>5 SECOND RULE</span> RIP OFF</h1>
+      </div>
+      <div class="top-actions">
+        <button id="settingsToggle" class="ghost-btn">⚙ Producer Controls</button>
+        <button id="muteBtn" class="ghost-btn">🔊 Mute</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="stage">
+        <div class="status-row">
+          <p id="statusPill" class="status-pill">Setup</p>
+          <p class="round-chip">ROUND <span id="roundValue">1</span></p>
+        </div>
+
+        <p id="playerSpotlight" class="player-spotlight">SETUP MODE</p>
+
+        <article class="prompt-card">
+          <p id="packTag" class="pack-tag">Pack: --</p>
+          <p id="promptText" class="prompt-text">Add player names, then hit Start Game.</p>
+          <p id="stateDebug" class="state-debug"></p>
+        </article>
+
+        <div class="countdown-wrap">
+          <p>TIME LEFT</p>
+          <p id="countdownValue" class="countdown">5</p>
+        </div>
+
+        <div class="control-grid">
+          <button id="startGameBtn" class="primary">Start Game</button>
+          <button id="startTurnBtn" class="primary">Start Turn (Space)</button>
+          <button id="correctBtn" class="success">Correct (Y)</button>
+          <button id="incorrectBtn" class="danger">Incorrect (N)</button>
+          <button id="skipBtn" class="ghost">Skip Prompt (S)</button>
+          <button id="endGameBtn" class="ghost">End Game</button>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="panel setup-panel">
+          <h2>Players</h2>
+          <label for="playerNames">One name per line</label>
+          <textarea id="playerNames" rows="7" placeholder="Alex&#10;Sam&#10;Jordan"></textarea>
+        </section>
+
+        <section class="panel score-panel">
+          <h2>Scoreboard</h2>
+          <div id="scoreboard" class="scoreboard"></div>
+        </section>
+
+        <section class="panel hotkey-panel" id="hotkeyHint">
+          <h2>Hotkeys</h2>
+          <p><kbd>Space</kbd> start turn · <kbd>Y</kbd>/<kbd>N</kbd> score · <kbd>S</kbd> skip</p>
+          <p><kbd>M</kbd> mute · <kbd>R</kbd> reset · <kbd>F</kbd> fullscreen</p>
+          <button id="testSoundBtn" class="ghost-btn tiny">Test Sound</button>
+        </section>
+      </aside>
+    </main>
+
+    <section id="settingsPanel" class="settings-panel" aria-label="Producer controls">
+      <h2>Producer Controls</h2>
+      <div class="settings-grid">
+        <label>Timer seconds
+          <input id="timerLength" type="number" min="3" max="10" value="5" />
+        </label>
+        <label>Reading delay (ms)
+          <input id="readingDelay" type="number" min="500" max="5000" value="1700" />
+        </label>
+        <label>Volume
+          <input id="volumeControl" type="range" min="0" max="1" step="0.05" value="0.7" />
+          <span id="volumeValue">70%</span>
+        </label>
+        <label>Animation intensity
+          <select id="animationIntensity">
+            <option value="low">Low</option>
+            <option value="normal" selected>Normal</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+      </div>
+
+      <h3>Prompt Packs</h3>
+      <div id="packToggles" class="pack-list"></div>
+
+      <div class="settings-actions">
+        <button id="resetDeckBtn" class="ghost">Reset Prompt Deck</button>
+        <button id="resetGameBtn" class="danger">Reset Game</button>
+      </div>
+    </section>
+
+    <dialog id="sessionModal" class="modal">
+      <h2>Saved session found</h2>
+      <p>Resume the previous game or start a fresh show?</p>
+      <div class="modal-actions">
+        <button id="resumeBtn" class="primary">Resume Game</button>
+        <button id="newSessionBtn" class="ghost">Start New</button>
+      </div>
+    </dialog>
+
+    <dialog id="endgamePanel" class="modal endgame">
+      <h2>Final Results</h2>
+      <p id="winnerText"></p>
+      <ol id="finalBoard" class="final-board"></ol>
+      <div class="stats-strip">
+        <p>Prompts used: <strong id="statPrompts"></strong></p>
+        <p>Total turns: <strong id="statTurns"></strong></p>
+        <p>Longest streak: <strong id="statStreak"></strong></p>
+      </div>
+      <div class="modal-actions">
+        <button id="playAgainBtn" class="primary">Play Again</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="scripts/app.js"></script>
+  </body>
+</html>
