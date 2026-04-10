@@ -16,7 +16,6 @@ export const DEFAULT_SETTINGS = {
   animationIntensity: 'normal',
   muted: false,
   volume: 0.7,
-  enabledPackIds: ['general', 'food', 'filmsTv', 'music', 'geography', 'worksafeChaos']
 };
 
 export function createInitialState() {
@@ -67,8 +66,8 @@ export function nextTurn(state) {
   return { nextIndex, round };
 }
 
-export function drawNextPrompt(state, packs, enabledPackIds) {
-  const pool = getPromptPool(packs, enabledPackIds);
+export function drawNextPrompt(state, promptLibrary) {
+  const pool = getPromptPool(promptLibrary);
   const used = new Set(state.usedPromptIds);
   return drawPrompt(pool, used);
 }

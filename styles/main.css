@@ -171,6 +171,8 @@ input, select {
   border-radius: 10px;
   padding: 0.45rem;
 }
+
+.settings-note { margin: 0.2rem 0 0.8rem; color: var(--muted); font-size: 0.92rem; }
 .pack-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.45rem; }
 .pack-toggle {
   display: flex;

@@ -1,0 +1,8 @@
+{
+  "name": "big-tweds-5-second-rule-rip-off",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate-prompts": "node scripts/generate-prompts.js"
+  }
+}

@@ -1,8 +1,8 @@
 import { AudioManager } from './audio.js';
 import { createInitialState, createPlayers, DEFAULT_SETTINGS, drawNextPrompt, nextTurn, PHASES } from './game.js';
-import { loadPromptPacks } from './prompts.js';
+import { loadPromptLibrary } from './prompts.js';
 import { clearGameState, loadGameState, loadSettings, saveGameState, saveSettings } from './storage.js';
-import { render, renderEndgame, renderPackSelectors } from './ui.js';
+import { render, renderEndgame } from './ui.js';
 
 const elements = {
   playerInput: document.querySelector('#playerNames'),
@@ -31,7 +31,6 @@ const elements = {
   animationSelect: document.querySelector('#animationIntensity'),
   resetDeckBtn: document.querySelector('#resetDeckBtn'),
   resetGameBtn: document.querySelector('#resetGameBtn'),
-  packToggles: document.querySelector('#packToggles'),
   sessionModal: document.querySelector('#sessionModal'),
   resumeBtn: document.querySelector('#resumeBtn'),
   newSessionBtn: document.querySelector('#newSessionBtn'),
@@ -45,7 +44,7 @@ const elements = {
   playAgainBtn: document.querySelector('#playAgainBtn')
 };
 
-let packs = [];
+let promptLibrary = null;
 let settings = loadSettings(DEFAULT_SETTINGS);
 let state = createInitialState();
 const audio = new AudioManager(settings.volume, settings.muted);
@@ -61,6 +60,10 @@ function persist() {
 
 function updateUi() {
   render(state, settings, elements);
+  const total = promptLibrary?.prompts?.length ?? 0;
+  const used = state.usedPromptIds.length;
+  const remaining = Math.max(0, total - used);
+  elements.stateDebug.textContent += ` · Prompts ${remaining}/${total} left`;
 }
 
 function stopTimers() {
@@ -113,9 +116,7 @@ function startRevealFlow() {
   spotlightPulse();
   audio.play('reveal');
 
-  const poolPreview = packs
-    .filter((pack) => settings.enabledPackIds.includes(pack.id))
-    .map((pack) => pack.name);
+  const poolPreview = [promptLibrary?.name || 'Generated Mega Deck'];
 
   let cycles = 0;
   revealInterval = setInterval(() => {
@@ -126,9 +127,9 @@ function startRevealFlow() {
 
   setTimeout(() => {
     clearInterval(revealInterval);
-    const prompt = drawNextPrompt(state, packs, settings.enabledPackIds);
+    const prompt = drawNextPrompt(state, promptLibrary);
     if (!prompt) {
-      elements.promptText.textContent = 'No prompts left in enabled packs. Reset deck in Settings.';
+      elements.promptText.textContent = 'No prompts left in the mega deck. Reset prompt deck in Settings.';
       state.phase = PHASES.READY;
       updateUi();
       return;
@@ -308,22 +309,6 @@ function attachEvents() {
     updateUi();
   });
 
-  elements.packToggles.addEventListener('change', (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLInputElement) || target.dataset.action !== 'toggle-pack') {
-      return;
-    }
-
-    const checked = [...elements.packToggles.querySelectorAll('input:checked')].map((input) => input.value);
-    if (checked.length === 0) {
-      target.checked = true;
-      return;
-    }
-
-    settings.enabledPackIds = checked;
-    persist();
-  });
-
   elements.resumeBtn.addEventListener('click', () => {
     elements.sessionModal.close();
     state.waitingForResumeChoice = false;
@@ -395,9 +380,7 @@ function attachEvents() {
 }
 
 async function init() {
-  packs = await loadPromptPacks();
-
-  renderPackSelectors(elements.packToggles, packs, settings.enabledPackIds);
+  promptLibrary = await loadPromptLibrary();
 
   const saved = loadGameState();
   if (saved?.players?.length) {
@@ -419,5 +402,5 @@ async function init() {
 
 init().catch((error) => {
   console.error(error);
-  elements.promptText.textContent = 'Failed to load prompt packs. Check local file paths.';
+  elements.promptText.textContent = 'Failed to load prompt library. Check local file paths.';
 });
