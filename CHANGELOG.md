@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-04-10
+
+### Added
+- Added a template + word-bank prompt generation pipeline with `scripts/generate-prompts.js`.
+- Added editable generation sources at `data/prompts/templates.json` and `data/prompts/wordbanks.json`.
+- Added a large generated runtime prompt dataset at `data/prompts/generated-prompts.json` (5,000+ prompts).
+- Added `package.json` script `npm run generate-prompts` for repeatable prompt regeneration.
+
+### Changed
+- Replaced multi-pack prompt loading with a single generated mega-deck prompt library.
+- Updated runtime prompt selection and UI labeling to use the generated library model while preserving no-repeat-in-session behavior.
+- Simplified producer controls by removing prompt pack toggles and keeping deck reset flow.
+- Updated docs (`README.md`, `AGENTS.md`) to describe the new scalable prompt architecture and workflow.
+
+### Removed
+- Removed legacy small static prompt pack JSON files.
+
 ## [1.1.1] - 2026-04-06
 
 ### Fixed

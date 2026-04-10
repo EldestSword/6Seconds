@@ -10,7 +10,30 @@ This project is static HTML/CSS/JS.
    - `python -m http.server 8000`
 2. Open `http://localhost:8000`.
 
-> Running with a local server is recommended so JSON prompt packs load reliably.
+> Running with a local server is recommended so JSON prompt data loads reliably.
+
+## Prompt system (generated mega deck)
+
+The game now uses a **large pre-generated prompt library** instead of small manual category packs.
+
+- Templates: `data/prompts/templates.json`
+- Word banks: `data/prompts/wordbanks.json`
+- Generated runtime dataset: `data/prompts/generated-prompts.json`
+- Generator script: `scripts/generate-prompts.js`
+
+### Regenerate prompts
+
+```bash
+npm run generate-prompts
+```
+
+This command rebuilds `generated-prompts.json` from templates + word banks, applying deduplication and quality filters.
+
+### In-session no-repeat behavior
+
+- Runtime tracks `usedPromptIds` in state.
+- A prompt is never shown twice in-session unless host clicks **Reset Prompt Deck**.
+- If the deck is exhausted, the host gets a clear message and can reset the deck.
 
 ## Core game flow
 
@@ -23,8 +46,6 @@ This project is static HTML/CSS/JS.
 7. Buzzer.
 8. Host marks correct/incorrect.
 9. Score updates and next turn starts.
-
-Prompts do not repeat until the deck is exhausted or reset.
 
 ## Features
 
@@ -45,7 +66,6 @@ Prompts do not repeat until the deck is exhausted or reset.
   - volume
   - mute
   - animation intensity
-  - prompt pack toggles
   - reset prompt deck
   - reset game
 - Save/resume support via `localStorage`.
@@ -59,32 +79,23 @@ Prompts do not repeat until the deck is exhausted or reset.
 ├── README.md
 ├── AGENTS.md
 ├── CHANGELOG.md
-├── assets/
-│   └── audio/
+├── package.json
 ├── data/
 │   └── prompts/
+│       ├── templates.json
+│       ├── wordbanks.json
+│       └── generated-prompts.json
 ├── scripts/
 │   ├── app.js
 │   ├── audio.js
 │   ├── game.js
+│   ├── generate-prompts.js
 │   ├── prompts.js
 │   ├── storage.js
 │   └── ui.js
 └── styles/
     └── main.css
 ```
-
-## Prompt packs
-
-Prompt packs live in `data/prompts/*.json` and are loaded locally at startup.
-Each pack provides:
-
-- `id`
-- `name`
-- `description`
-- `prompts` array
-
-Add new packs by creating a JSON file and registering it in `scripts/prompts.js`.
 
 ## Save / resume behavior
 

@@ -25,23 +25,6 @@ function phaseLabel(phase) {
   }
 }
 
-export function renderPackSelectors(container, packs, enabledPackIds) {
-  container.innerHTML = '';
-  packs.forEach((pack) => {
-    const wrap = document.createElement('label');
-    wrap.className = 'pack-toggle';
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.value = pack.id;
-    checkbox.checked = enabledPackIds.includes(pack.id);
-    checkbox.dataset.action = 'toggle-pack';
-    const text = document.createElement('span');
-    text.innerHTML = `<strong>${escapeText(pack.name)}</strong><small>${escapeText(pack.description)}</small>`;
-    wrap.append(checkbox, text);
-    container.appendChild(wrap);
-  });
-}
-
 export function renderPlayers(container, state) {
   container.innerHTML = '';
   const leaders = getLeaderboard(state.players);
@@ -73,7 +56,7 @@ export function render(state, settings, elements) {
   elements.statusPill.textContent = phaseLabel(state.phase);
   elements.playerSpotlight.textContent = current ? `${current.name.toUpperCase()} IS UP!` : 'SETUP MODE';
   elements.promptText.textContent = state.currentPrompt?.text ?? 'Press Start Game to begin the chaos.';
-  elements.packTag.textContent = state.currentPrompt ? `Pack: ${state.currentPrompt.packName}` : 'Pack: --';
+  elements.packTag.textContent = state.currentPrompt ? `Library: ${state.currentPrompt.libraryName}` : 'Library: --';
   elements.countdown.textContent = state.phase === PHASES.COUNTDOWN ? String(state.countdownValue) : '5';
   elements.countdown.classList.toggle('is-live', state.phase === PHASES.COUNTDOWN);
 
