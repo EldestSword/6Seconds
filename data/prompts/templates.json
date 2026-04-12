@@ -1,60 +1,150 @@
 {
-  "version": 2,
+  "version": 3,
   "templates": [
-    { "id": "adj_things", "text": "Name 3 things that are {adjective}." },
-    { "id": "verb_things", "text": "Name 3 things you {verb}." },
-    { "id": "in_place", "text": "Name 3 things you would find in {placeWithArticle}." },
-    { "id": "category_adj", "text": "Name 3 {categoryPlural} that are {adjective}." },
-    { "id": "emotion_actions", "text": "Name 3 things people do when they are {emotion}." },
-    { "id": "if_scenario", "text": "Name 3 things you would do if {scenario}." },
-    { "id": "reasons_verb_phrase", "text": "Name 3 reasons someone might {verbPhrase}." },
-    { "id": "belong_place", "text": "Name 3 things that belong in {placeWithArticle}." },
-    { "id": "easy_verb", "text": "Name 3 things that are easy to {verbBase}." },
-    { "id": "never_take_place", "text": "Name 3 things you should never take to {placeWithArticle}." },
-    { "id": "happen_occasion", "text": "Name 3 things that might happen on {occasion}." },
-    { "id": "forget_place", "text": "Name 3 things people forget when they go to {placeWithArticle}." },
-    { "id": "say_to_person", "text": "Name 3 things you might say to {personRoleWithArticle}." },
-    { "id": "ruin_event", "text": "Name 3 things that would ruin {eventWithArticle}." },
-    { "id": "hard_condition", "text": "Name 3 things that are hard to do when you are {condition}." },
-    { "id": "children_love", "text": "Name 3 things children love." },
-    { "id": "adults_complain", "text": "Name 3 things adults complain about." },
-    { "id": "usually_sticky", "text": "Name 3 things that are usually sticky." },
-    { "id": "bad_gift", "text": "Name 3 things that make a bad gift." },
-    { "id": "hide_from_boss", "text": "Name 3 things you might hide from your boss." },
-    { "id": "avoid_on_trip", "text": "Name 3 things to avoid on {tripType}." },
-    { "id": "at_party", "text": "Name 3 things people do at {socialEvent}." },
-    { "id": "lose_context", "text": "Name 3 things people lose during {context}." },
-    { "id": "wear_context", "text": "Name 3 things people wear at {contextWithArticle}." },
-    { "id": "collect", "text": "Name 3 things people collect." },
-    { "id": "break", "text": "Name 3 things people break by accident." },
-    { "id": "office_annoying", "text": "Name 3 annoying things in {officePlaceWithArticle}." },
-    { "id": "school_forget", "text": "Name 3 things students forget to bring to {schoolPlace}." },
-    { "id": "weather_day", "text": "Name 3 things people do on {weatherDay}." },
-    { "id": "pretend_understand", "text": "Name 3 things people pretend to understand." },
-    { "id": "interview_never", "text": "Name 3 things you should never say in {formalSituationWithArticle}." },
-    { "id": "kitchen_need", "text": "Name 3 things you need before you {kitchenAction}." },
-    { "id": "meeting_ruin", "text": "Name 3 things that would derail {workEventWithArticle}." },
-    { "id": "weekend_plan", "text": "Name 3 things people plan for {weekendContext}." },
-    { "id": "late_for", "text": "Name 3 reasons people are late for {timeBoundEvent}." },
-    { "id": "adj_place", "text": "Name 3 things that are {adjective} in {placeWithArticle}." },
-    { "id": "adj_trip", "text": "Name 3 things that are {adjective} on {tripType}." },
-    { "id": "emotion_event", "text": "Name 3 things people do at {socialEvent} when they are {emotion}." },
-    { "id": "scenario_place", "text": "Name 3 things you would do in {placeWithArticle} if {scenario}." },
-    { "id": "verb_place", "text": "Name 3 things you {verb} in {placeWithArticle}." },
-    { "id": "verb_event", "text": "Name 3 reasons someone might {verbPhrase} before {eventWithArticle}." },
-    { "id": "forget_trip", "text": "Name 3 things people forget on {tripType}." },
-    { "id": "ruin_social", "text": "Name 3 things that would ruin {socialEvent}." },
-    { "id": "hard_place", "text": "Name 3 things that are hard to do in {placeWithArticle}." },
-    { "id": "easy_condition", "text": "Name 3 things that are easy to {verbBase} when you are {condition}." },
-    { "id": "office_emotion", "text": "Name 3 things people do in {officePlaceWithArticle} when they feel {emotion}." },
-    { "id": "school_weather", "text": "Name 3 things students do on {weatherDay}." },
-    { "id": "kitchen_adj", "text": "Name 3 things that are {adjective} when you {kitchenAction}." },
-    { "id": "say_emotion", "text": "Name 3 things you might say to {personRoleWithArticle} when you are {emotion}." },
-    { "id": "event_condition", "text": "Name 3 things that are hard to do at {eventWithArticle} when you are {condition}." },
-    { "id": "place_condition", "text": "Name 3 things people avoid in {placeWithArticle} when they are {condition}." },
-    { "id": "weekend_weather", "text": "Name 3 things people do on {weatherDay} during {weekendContext}." },
-    { "id": "formal_emotion", "text": "Name 3 things people do in {formalSituationWithArticle} when they are {emotion}." },
-    { "id": "late_weather", "text": "Name 3 reasons people are late for {timeBoundEvent} on {weatherDay}." },
-    { "id": "trip_adj", "text": "Name 3 things that are {adjective} on {occasion}." }
+    {
+      "id": "plain_category",
+      "family": "classic",
+      "text": "Name 3 {categoryPlural}."
+    },
+    {
+      "id": "kinds_of",
+      "family": "classic",
+      "text": "Name 3 kinds of {categorySingular}."
+    },
+    {
+      "id": "category_people_watch",
+      "family": "classic",
+      "text": "Name 3 {watchablePlural} people watch."
+    },
+    {
+      "id": "category_letter",
+      "family": "letter",
+      "text": "Name 3 {categoryLetterPlural} beginning with {letter}."
+    },
+    {
+      "id": "people_name_letter",
+      "family": "letter",
+      "text": "Name 3 {peopleType} names beginning with {letter}."
+    },
+    {
+      "id": "find_in_place",
+      "family": "place",
+      "text": "Name 3 things you'd find in {placeWithArticle}."
+    },
+    {
+      "id": "see_at_place",
+      "family": "place",
+      "text": "Name 3 things you'd see at {placeWithArticle}."
+    },
+    {
+      "id": "things_in_room",
+      "family": "place",
+      "text": "Name 3 things in {roomWithArticle}."
+    },
+    {
+      "id": "place_category_find",
+      "family": "place",
+      "text": "Name 3 {placeCategoryPlural} you'd find in {placeWithArticle}."
+    },
+    {
+      "id": "place_category_see",
+      "family": "place",
+      "text": "Name 3 {placeCategoryPlural} you'd see at {placeWithArticle}."
+    },
+    {
+      "id": "adjective_things",
+      "family": "feature",
+      "text": "Name 3 {adjective} things."
+    },
+    {
+      "id": "things_with_feature",
+      "family": "feature",
+      "text": "Name 3 things with {feature}."
+    },
+    {
+      "id": "associated_theme",
+      "family": "feature",
+      "text": "Name 3 things associated with {theme}."
+    },
+    {
+      "id": "adjective_category",
+      "family": "feature",
+      "text": "Name 3 {adjective} {featureCategoryPlural}."
+    },
+    {
+      "id": "category_with_feature",
+      "family": "feature",
+      "text": "Name 3 {featureCategoryPlural} with {feature}."
+    },
+    {
+      "id": "take_on_trip",
+      "family": "lifestyle",
+      "text": "Name 3 things you'd take on {tripType}."
+    },
+    {
+      "id": "wear_in_season",
+      "family": "lifestyle",
+      "text": "Name 3 things you wear in {season}."
+    },
+    {
+      "id": "forget_for_trip",
+      "family": "lifestyle",
+      "text": "Name 3 things people forget for {tripType}."
+    },
+    {
+      "id": "trip_item",
+      "family": "lifestyle",
+      "text": "Name 3 {tripItemPlural} you'd take on {tripType}."
+    },
+    {
+      "id": "season_wearable",
+      "family": "lifestyle",
+      "text": "Name 3 {wearablePlural} you wear in {season}."
+    },
+    {
+      "id": "place_feature_category",
+      "family": "place",
+      "text": "Name 3 {featureCategoryPlural} in {placeWithArticle}."
+    },
+    {
+      "id": "place_things_with_feature",
+      "family": "place",
+      "text": "Name 3 things with {feature} in {placeWithArticle}."
+    },
+    {
+      "id": "feature_place",
+      "family": "feature",
+      "text": "Name 3 {adjective} things in {placeWithArticle}."
+    },
+    {
+      "id": "lifestyle_for_trip",
+      "family": "lifestyle",
+      "text": "Name 3 things for {tripType}."
+    },
+    {
+      "id": "people_eat",
+      "family": "classic",
+      "text": "Name 3 {ediblePlural} people eat."
+    },
+    {
+      "id": "people_wear",
+      "family": "classic",
+      "text": "Name 3 {wearableCategoryPlural} people wear."
+    },
+    {
+      "id": "people_use",
+      "family": "classic",
+      "text": "Name 3 {usablePlural} people use."
+    },
+    {
+      "id": "people_play",
+      "family": "classic",
+      "text": "Name 3 {playablePlural} people play."
+    },
+    {
+      "id": "theme_category",
+      "family": "classic",
+      "text": "Name 3 {themeCategoryPlural} for {themeNoun}."
+    }
   ]
 }
