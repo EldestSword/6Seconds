@@ -15,6 +15,7 @@ Maintain and extend **BIG TWED'S 5 SECOND RULE RIP OFF** as a premium-feeling, s
   - `scripts/ui.js`: render and visual state updates.
 - Styling in `styles/main.css`.
 - Prompt content + generation sources in:
+  - `data/prompts/classic-core-prompts.json`
   - `data/prompts/templates.json`
   - `data/prompts/wordbanks.json`
   - `data/prompts/generated-prompts.json`
@@ -37,23 +38,28 @@ Maintain and extend **BIG TWED'S 5 SECOND RULE RIP OFF** as a premium-feeling, s
 
 ## Prompt architecture rules
 - Runtime prompt source is `data/prompts/generated-prompts.json` (single large library).
-- Expand prompt volume by editing templates and word banks, then regenerating output.
-- Avoid returning to long hand-written prompt arrays as the primary prompt source.
+- Build runtime prompts from a curated classic core + safer generated prompts.
+- Keep classic-style, category-recall prompt quality as the primary objective.
 - No repeats in-session unless host resets the prompt deck.
 
 ## Prompt generation expectations
-- Keep all generated prompts work-safe for team settings.
+- Keep all prompts work-safe for team settings.
 - Avoid sexual/offensive/political/hateful/invasive prompts.
 - Favor quick-read, quick-answer spoken prompts.
+- Strongly prefer objective, bounded categories that hosts can judge quickly.
+- Avoid niche scenario/improv prompts and subjective hypothetical behavior prompts.
 - Use generation quality controls:
   - deduplication
-  - basic grammar/readability checks
-  - rule-based exclusion of awkward combinations
+  - readability checks
+  - objectivity filter
+  - nicheness filter
+  - judgeability filter
+  - common-knowledge bias
 - Keep “Name 3...” prefix for all prompts.
 
 ## Regeneration workflow
 - Run `npm run generate-prompts` from repo root.
-- This regenerates `data/prompts/generated-prompts.json` from templates + word banks.
+- This regenerates `data/prompts/generated-prompts.json` from classic core + templates + word banks.
 
 ## Change discipline
 - Update `CHANGELOG.md` using Keep a Changelog + SemVer.

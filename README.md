@@ -12,14 +12,50 @@ This project is static HTML/CSS/JS.
 
 > Running with a local server is recommended so JSON prompt data loads reliably.
 
-## Prompt system (generated mega deck)
+## Prompt system (classic-first generated mega deck)
 
-The game now uses a **large pre-generated prompt library** instead of small manual category packs.
+The game uses a **large local prompt library** tuned to feel like classic 5-second-rule play:
 
-- Templates: `data/prompts/templates.json`
-- Word banks: `data/prompts/wordbanks.json`
+- fast to understand
+- broad but bounded
+- mostly objective and low-argument
+- easy for a host to judge quickly
+
+### Prompt sources
+
+- Classic core prompts (curated): `data/prompts/classic-core-prompts.json`
+- Generator templates: `data/prompts/templates.json`
+- Generator word banks: `data/prompts/wordbanks.json`
 - Generated runtime dataset: `data/prompts/generated-prompts.json`
 - Generator script: `scripts/generate-prompts.js`
+
+### Generation philosophy
+
+The generator now prioritizes concrete prompt families and rejects niche/improv-style prompts:
+
+- Category prompts: `Name 3 {category}`
+- Letter prompts: `Name 3 {category} beginning with {letter}`
+- Place prompts: `Name 3 things you'd find in {place}`
+- Feature prompts: `Name 3 things with {feature}`
+- Tightly controlled lifestyle prompts: `Name 3 things you'd take on {tripType}`
+
+Built-in quality checks include:
+
+- objectivity filter
+- nicheness filter
+- judgeability filter
+- readability filter
+- deduplication + letter/category compatibility checks
+
+### Family weighting
+
+Generated prompts are weighted roughly as:
+
+- 45% classic/plain category prompts
+- 25% letter-based prompts
+- 15% place-based prompts
+- 10% adjective/feature prompts
+- 5% simple lifestyle prompts
 
 ### Regenerate prompts
 
@@ -27,7 +63,7 @@ The game now uses a **large pre-generated prompt library** instead of small manu
 npm run generate-prompts
 ```
 
-This command rebuilds `generated-prompts.json` from templates + word banks, applying deduplication and quality filters.
+This rebuilds `generated-prompts.json` from curated core prompts + safer template/word-bank generation.
 
 ### In-session no-repeat behavior
 
@@ -82,6 +118,7 @@ This command rebuilds `generated-prompts.json` from templates + word banks, appl
 ├── package.json
 ├── data/
 │   └── prompts/
+│       ├── classic-core-prompts.json
 │       ├── templates.json
 │       ├── wordbanks.json
 │       └── generated-prompts.json
